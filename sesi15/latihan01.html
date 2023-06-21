@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan01</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+        .form1{
+            padding: 20px;
+            background-color: #15172b;
+            border-radius: 10px;
+        }
+        .warna{
+            background-color: #15172b;
+        }
+        input{
+            background-color: #303245;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="text-align: center;">
+        <hr><hr>
+        <form action="" class="form1">
+            <div>
+                <i>Nama</i>
+                <input type="text" id="txNAMA" class="form-control warna" placeholder="Masukkan Nama" aria-label="default input example">
+            </div><br>
+            
+            <div>
+                <i>Email</i>
+                <input type="email" id="txEMAIL" class="form-control warna" placeholder="Masukkan Email" aria-label="default input example">
+            </div><br>
+            <div>
+                <i>Username</i>
+                <input type="text" id="txUSERNAME" class="form-control warna" placeholder="Masukkan Username" aria-label="default input example">
+            </div><br>
+            <div>
+                <i>ID</i>
+                <input type="text" id="txID" class="form-control warna" placeholder="Masukkan ID" aria-label="default input example">
+            </div>
+        </form>
+        <hr><hr>
+    </div>
+
+    <div id="tampildata"></div>
+    
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            let urtarget = "https://webpro.ptov.my.id/api/curduser.php?aksi=get";
+            $.get({
+                url: urtarget,
+                success: function(dta, status, xhr){
+                    let tx = '<table class="table container"><thead><tr><th scope="col">#</th><th scope="col">Nama Lengkap</th><th scope="col">Email</th><th scope="col">Username</th></tr></thead>';
+                    let nox = 1;
+                    for(let i=0; i<dta.affected; i++){
+                        tx += '<tr>';
+                        tx += '<td>'+nox+'</td>';
+                        tx += '<td>'+dta.isi[i][0]+'</td>';
+                        tx += '<td>'+dta.isi[i][1]+'</td>';
+                        tx += '<td>'+dta.isi[i][1]+'</td>';
+                        tx += '<tr>';
+                        nox++;
+                }
+                tx += "</table>;";
+                $("#tampildata").html(tx);
+            }
+            });
+        });
+    </script>
+    
+</body>
+</html>
