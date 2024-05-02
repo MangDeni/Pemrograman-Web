@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROGRAM MENGHITUNG BANGUN</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      body {
+        background-color: #595959;
+        margin-top: 20px;
+      }
+      .container {
+        border: 3px solid black;
+        border-radius: 15px;
+        background-color: #949494;
+      }
+      .container-button {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center p-4">
+      <h3 style="text-align: center">HITUNG BANGUN</h3>
+      <div style="text-align: center">
+        <button
+          type="button"
+          class="C1 btn btn-primary"
+          style="text-align: center"
+        >
+          Persegi Panjang
+        </button>
+
+        <button
+          type="button"
+          class="C2 btn btn-primary"
+          style="text-align: center"
+        >
+          Segitiga
+        </button>
+
+        <button
+          type="button"
+          class="C3 btn btn-primary"
+          style="text-align: center"
+        >
+          Persegi
+        </button>
+
+        <button
+          type="button"
+          class="C4 btn btn-primary"
+          style="text-align: center"
+        >
+          Lingkaran
+        </button>
+      </div>
+      <br />
+
+      <!-- Bangun Persegi Panjang -->
+      <div id="persegipanjang">
+        <div>
+          <i>Nilai Panjang</i>
+          <input type="number" class="PJ form-control" />
+        </div>
+        <br />
+        <div>
+          <i>Nilai Lebar</i>
+          <input type="number" class="LB form-control" />
+        </div>
+        <br />
+        <div style="text-align: center">
+          <button type="button" class="HitungPersegiPanjang btn btn-primary">
+            Hitung Luas
+          </button>
+        </div>
+      </div>
+
+      <!-- Bangun Persegi  -->
+      <div id="persegi">
+        <div>
+          <i>Nilai Sisi</i>
+          <input type="number" class="SS form-control" />
+        </div>
+        <br />
+        <div style="text-align: center">
+          <button type="button" class="HitungPersegi btn btn-primary">
+            Hitung Luas
+          </button>
+        </div>
+      </div>
+
+      <!-- Bangun Segitiga -->
+      <div id="segitiga">
+        <div>
+          <i>Nilai Alas</i>
+          <input type="number" class="AL form-control" />
+        </div>
+        <br />
+        <div>
+          <i>Nilai Tinggi</i>
+          <input type="number" class="TG form-control" />
+        </div>
+        <br />
+        <div style="text-align: center">
+          <button type="button" class="HitungSegitiga btn btn-primary">
+            Hitung Luas
+          </button>
+        </div>
+      </div>
+
+      <!-- Bangun Lingkaran -->
+      <div id="lingkaran">
+        <div>
+          <i>Nilai Diameter</i>
+          <input type="number" class="DM form-control" />
+        </div>
+        <br />
+        <div style="text-align: center">
+          <button type="button" class="HitungLingkaran btn btn-primary">
+            Hitung Luas
+          </button>
+        </div>
+      </div>
+
+      <!-- Penghitung Hasil -->
+      <div id="hasil"></div>
+    </div>
+    <div class="container-button">
+      <a href="index.html" class="btn btn-primary">Kembali Ke Beranda</a>
+    </div>
+
+    <script src="jquery-3.7.0.min.js"></script>
+    <script>
+      $(function () {
+        $("#persegipanjang").hide();
+        $("#segitiga").hide();
+        $("#persegi").hide();
+        $("#lingkaran").hide();
+
+        $(".C1").click(function () {
+          $("h3").html("HITUNG LUAS PERSEGI PANJANG");
+          $("#lingkaran").hide(500);
+          $("#segitiga").hide(500);
+          $("#persegi").hide(500);
+          $("#persegipanjang").show(500);
+          $("hasil").html("");
+        });
+
+        $(".C2").click(function () {
+          $("h3").html("HITUNG LUAS SEGITIGA");
+          $("#persegipanjang").hide(500);
+          $("#lingkaran").hide(500);
+          $("#persegi").hide(500);
+          $("#segitiga").show(500);
+          $("hasil").html("");
+        });
+
+        $(".C3").click(function () {
+          $("h3").html("HITUNG LUAS PERSEGI");
+          $("#persegipanjang").hide(500);
+          $("#lingkaran").hide(500);
+          $("#segitiga").hide(500);
+          $("#persegi").show(500);
+          $("hasil").html("");
+        });
+
+        $(".C4").click(function () {
+          $("h3").html("HITUNG LUAS LINGKARAN");
+          $("#persegipanjang").hide(500);
+          $("#segitiga").hide(500);
+          $("#persegi").hide(500);
+          $("#lingkaran").show(500);
+          $("hasil").html("");
+        });
+
+        //Proses Penghitungan Bangun Persegi Panjang Panjang
+        $(".HitungPersegiPanjang").click(function () {
+          //proses input
+          let P = $(".PJ").val();
+          let L = $(".LB").val();
+          //proses
+          let LU = P * L;
+          //output
+          let tx =
+            "Nilai Luas Dari Persegi Panjang dengan Panjang : " +
+            P +
+            " &nbspcm ";
+          tx += " dan Lebar : " + L + " &nbspcm " + " adalah : <br>";
+          tx += "Rumua Luas = Panjang x Lebar <br>";
+          tx +=
+            "Luas = " +
+            P +
+            " &nbspcm " +
+            " x " +
+            L +
+            " &nbspcm " +
+            " &nbspcm " +
+            "<br>";
+          tx +=
+            "Hasil = " +
+            LU +
+            " &nbspcm " +
+            " <br>Jadi Luasnya adalah " +
+            LU +
+            " &nbspcm ";
+
+          $("#hasil").html(tx);
+        });
+
+        //Proses Penghitungan Bangun Segitiga
+        $(".HitungSegitiga").click(function () {
+          //proses input
+          let A = $(".AL").val();
+          let T = $(".TG").val();
+          //proses
+          let LU = 0.5 * A * T;
+          //output
+          let tx = "Nilai Luas Dari Segitiga dengan Alas : " + A + " &nbspcm ";
+          tx += " dan Tinggi : " + T + " &nbspcm " + " adalah : <br>";
+          tx += "Rumus Luas = 1/2 x Alas x Tinggi <br>";
+          tx +=
+            "Luas = 1/2 x " +
+            A +
+            " &nbspcm " +
+            " x " +
+            T +
+            " &nbspcm " +
+            "<br>";
+          tx +=
+            "Hasil = " +
+            LU +
+            " &nbspcm " +
+            " <br>Jadi Luasnya adalah " +
+            LU +
+            " &nbspcm ";
+
+          $("#hasil").html(tx);
+        });
+
+        //Proses Penghitungan Bangun Persegi
+        $(".HitungPersegi").click(function () {
+          //proses input
+          let S = $(".SS").val();
+
+          //proses
+          let LU = S * S;
+          //output
+          let tx =
+            "Nilai Luas Dari Persegi dengan Sisi : " +
+            S +
+            "&nbspcm" +
+            " adalah : " +
+            "<br>";
+          tx += "Rumus Luas = Sisi x Sisi <br>";
+          tx += "Luas = " + S + "&nbspcm" + " x " + S + "&nbspcm" + "<br>";
+          tx +=
+            "Hasil = " +
+            LU +
+            "&nbspcm" +
+            " <br>Jadi Luasnya adalah " +
+            LU +
+            " &nbspcm ";
+
+          $("#hasil").html(tx);
+        });
+
+        //Proses Penghitungan Bangun Lingkaran
+        $(".HitungLingkaran").click(function () {
+          //proses input
+          let D = $(".DM").val();
+
+          //proses
+          let R = D / 2;
+          let LU = 3.14 * R * R;
+          //output
+          let tx =
+            "Nilai Luas Dari Lingkaran dengan Diameter : " +
+            D +
+            "&nbspcm" +
+            " adalah : " +
+            "<br>";
+          tx += "Jari Jari dari Lingkaran : " + R + " <br> ";
+          tx += "Rumus Luas = π x Jari-Jari x Jari-Jari <br>";
+          tx +=
+            "Luas = " +
+            " π " +
+            " x " +
+            R +
+            " &nbspcm " +
+            " x " +
+            R +
+            "&nbspcm" +
+            "<br>";
+          tx +=
+            "Hasil = " +
+            LU +
+            "&nbspcm" +
+            " <br>Jadi Luasnya adalah " +
+            LU +
+            " &nbspcm ";
+
+          $("#hasil").html(tx);
+        });
+      });
+    </script>
+  </body>
+</html>

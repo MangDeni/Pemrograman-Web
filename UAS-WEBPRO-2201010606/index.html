@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>MENGHITUNG BANGUN</title>
+  </head>
+  <body>
+    <div>
+      <section class="sec">
+        <header>
+          <!-- LOGO -->
+          <a href="#"><img src="lgo.png" class="logo" /></a>
+
+          <!-- NAVBAR -->
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="#">Selengkapnya</a></li>
+          </ul>
+        </header>
+        <div class="content">
+          <div class="textBox">
+            <!-- JUDUL -->
+            <h2 id="p">Menghitung<br /><span>Luas Bangun</span></h2>
+            <!-- DESKRIPSI -->
+            <p>
+              Menghitung suatu bangun memuliki rumus tersendiri, dengan kita
+              menghitung luas bangun kita akan mengetahui luas bangun tersebut
+              hanya dengan menginput beberapa angka dari bangun tersebut
+            </p>
+            <!-- BUTTON -->
+            <a href="index2.html">Mulai Menghitung</a>
+          </div>
+          <div class="imgBox">
+            <img src="persegi.png" class="uccu" />
+          </div>
+        </div>
+        <ul class="thumb">
+          <li>
+            <img
+              src="persegi.png"
+              onclick="imgSlider('persegi.png');changeBgColor('#59A8E2')"
+            />
+          </li>
+          <li>
+            <img
+              src="persegipj.png"
+              onclick="imgSlider('persegipj.png');changeBgColor('#F39E22')"
+            />
+          </li>
+          <li>
+            <img
+              src="segitiga.png"
+              onclick="imgSlider('segitiga.png');changeBgColor('#1e1e1e')"
+            />
+          </li>
+          <li>
+            <img
+              src="lingkaran.png"
+              onclick="imgSlider('lingkaran.png');changeBgColor('#4D2828')"
+            />
+          </li>
+        </ul>
+      </section>
+    </div>
+    <script type="text/javascript">
+      function imgSlider(anything) {
+        document.querySelector(".uccu").src = anything;
+      }
+      function changeBgColor(color) {
+        const sec = document.querySelector(".sec");
+        sec.style.background = color;
+      }
+    </script>
+  </body>
+</html>
